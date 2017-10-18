@@ -35,6 +35,19 @@
             weight: 3
         };
 
+        var neighborhoodOptions = {
+            fillOpacity: 0,
+            color: 'blue',
+            opacity: 1,
+            weight: 2
+        };
+
+        var herOptions = {
+            fillOpacity: .25,
+            background: '#ffffcc',
+            weight: 1
+        };
+
         var options = {
             center: [43.7246, -79.3813],
             zoom: 11,
@@ -45,17 +58,29 @@
         var map = L.map('map', options);
         $.when(
             $.getJSON('data/toronto-boundary.json'),
+            $.getJSON('data/neighbor.json'),
+            $.getJSON('data/her-dist.json'),
             $.getJSON('data/bike-trails.json'),
-        ).done(function (boundary, trails) {
-            drawMap(boundary, trails);
+            $.getJSON('data/cult-spot.json'),
+            $.getJSON('data/pub-art.json'),
+        ).done(function (boundary, neighborhood, herDistrict, trails, cultSpot, pubArt) {
+            drawMap(boundary, neighborhood, herDistrict, trails, cultSpot, pubArt);
         });
 
-        function drawMap(boundary, trails) {
+        function drawMap(boundary, neighborhood, herDistrict, trails, cultSpot, pubArt) {
 
             L.geoJson(boundary, {
                 style: boundaryOptions
             }).addTo(map);
+            L.geoJson(neighborhood, {
+                style: neighborhoodOptions
+            }).addTo(map);
+            L.geoJson(herDistrict, {
+                style: herOptions
+            }).addTo(map);
             L.geoJson(trails).addTo(map);
+            L.geoJson(cultSpot).addTo(map);
+            L.geoJson(pubArt).addTo(map);
         }
     </script>
 </body>
