@@ -51,35 +51,32 @@
             style: herOptions
         }).addTo(map);
         L.geoJson(trails).addTo(map);
-        L.geoJson(cultSpot).addTo(map);
-
-
-        cultSpot.forEach(function(feature) {
-
-            var props = feature.properties;
-
-            console.log(feature);
-
-            var herIcon = L.icon({
-                iconUrl: 'svg/hert-svg.svg',
-                iconSize: [20, 20]
-            });
+        L.geoJson(cultSpot, {
             
-            var popup = "<h3>" + props.PNT_OF_INT + "</h3>" + "<p>" + props.DESCRPTION + "</p>" + "<p><b>Website</b>: <a href=' " + props.WEBSITE + "'>" + props.WEBSITE + "</a></p>";
-
-            var herMarker = L.marker([props.LONGITUDE, props.LATITUDE], {
-                icon:herIcon
-            }).addTo(map).bindPopup(popup);
-    
-            marker.on('mouseover', function() { //when mouse hovers over marker make it do a thing
-                this.openPopup(); //the thing is to open the popup
-              });
-        
-              marker.on('mouseout', function() { //when the mouse moves away from the marker it will do a thing
-                this.closePopup(); //the thing will be to close the popup
-              });
-    
-        })
+            onEachFeature: function(feature, layer) {
+                var props = feature.properties;
+                
+                var herIcon = L.icon({
+                    iconUrl: 'svg/hert-svg.svg',
+                    iconSize: [20, 20]
+                        });
+                            
+                    var popup = "<h3>" + props.PNT_OF_INT + "</h3>" + "<p>" + props.DESCRPTION + "</p>" + "<p><b>Website</b>: <a href=' " + props.WEBSITE + "'>" + props.WEBSITE + "</a></p>";
+                
+                    var herMarker = L.marker([props.LONGITUDE, props.LATITUDE], {
+                                icon:herIcon
+                            }).addTo(map).bindPopup(popup);
+                    
+                            herMarker.on('mouseover', function() { //when mouse hovers over marker make it do a thing
+                                this.openPopup(); //the thing is to open the popup
+                              });
+                        
+                              herMarker.on('mouseout', function() { //when the mouse moves away from the marker it will do a thing
+                                this.closePopup(); //the thing will be to close the popup
+                              });
+                
+            }
+        }).addTo(map);
 
     }
 
