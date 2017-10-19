@@ -53,10 +53,8 @@
         L.geoJson(trails).addTo(map);
         L.geoJson(cultSpot).addTo(map);
 
-        var i = 0;
 
-
-        cultSpot.forEach(function(feature, i) {
+        cultSpot.forEach(function(feature) {
 
             var props = feature.properties;
 
