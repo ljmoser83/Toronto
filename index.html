@@ -7,18 +7,7 @@
 
     <title>Toronto Bikes and History Tour</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
-    <style>
-        body,
-        #map {
-            position: absolute;
-            width: 100%;
-            top: 0;
-            bottom: 0;
-            margin: 0;
-            padding: 0;
-            background: rgba(0, 0, 0, .75);
-        }
-    </style>
+    <link href='css/styles.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -27,62 +16,8 @@
 
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script>
-        var boundaryOptions = {
-            fillOpacity: 0,
-            color: 'red',
-            opacity: 1,
-            weight: 3
-        };
+    <script src='js/app.js'></script>
 
-        var neighborhoodOptions = {
-            fillOpacity: 0,
-            color: 'blue',
-            opacity: 1,
-            weight: 2
-        };
-
-        var herOptions = {
-            fillOpacity: 1,
-            fillColor: 'green',
-            weight: 1            
-        };
-
-        var options = {
-            center: [43.7246, -79.3813],
-            zoom: 11,
-            minZoom: 9,
-            maxZoom: 16,
-
-        };
-        var map = L.map('map', options);
-        $.when(
-            $.getJSON('data/toronto-boundary.json'),
-            $.getJSON('data/neighbor.json'),
-            $.getJSON('data/her-dist.json'),
-            $.getJSON('data/bike-trails.json'),
-            $.getJSON('data/cult-spot.json'),
-            $.getJSON('data/pub-art.json'),
-        ).done(function (boundary, neighborhood, herDistrict, trails, cultSpot, pubArt) {
-            drawMap(boundary, neighborhood, herDistrict, trails, cultSpot, pubArt);
-        });
-
-        function drawMap(boundary, neighborhood, herDistrict, trails, cultSpot, pubArt) {
-
-            L.geoJson(boundary, {
-                style: boundaryOptions
-            }).addTo(map);
-            L.geoJson(neighborhood, {
-                style: neighborhoodOptions
-            }).addTo(map);
-            L.geoJson(herDistrict, {
-                style: herOptions
-            }).addTo(map);
-            L.geoJson(trails).addTo(map);
-            L.geoJson(cultSpot).addTo(map);
-            L.geoJson(pubArt).addTo(map);
-        }
-    </script>
 </body>
 
 </html>
