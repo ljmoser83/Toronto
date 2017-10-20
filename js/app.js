@@ -56,24 +56,29 @@
             onEachFeature: function(feature, layer) {
                 var props = feature.properties;
                 
-                var herIcon = L.icon({
-                    iconUrl: 'svg/hert-svg.svg',
-                    iconSize: [20, 20]
-                        });
-                            
-                    var popup = "<h3>" + props.PNT_OF_INT + "</h3>" + "<p>" + props.DESCRPTION + "</p>" + "<p><b>Website</b>: <a href=' " + props.WEBSITE + "'>" + props.WEBSITE + "</a></p>";
+            //     var herIcon = L.icon({
+            //         iconUrl: 'svg/hert-svg.svg',
+            //         iconSize: [20, 20]
+            //             });
                 
-                    var herMarker = L.marker([props.LONGITUDE, props.LATITUDE], {
-                                icon:herIcon
-                            }).addTo(map).bindPopup(popup);
-                    
-                            herMarker.on('mouseover', function() { //when mouse hovers over marker make it do a thing
-                                this.openPopup(); //the thing is to open the popup
-                              });
+            // L.marker([props.LONGITUDE, props.LATITUDE], {
+            //     icon:herIcon
+            // }).addTo(map)
+
+            var popup = "<h3>" + props.PNT_OF_INT + "</h3>" + "<p>" + props.DESCRPTION + "</p>";
+            if(props.WEBSITE != null) {
+                popup += "<p><b>Website</b>: <a href=' " + props.WEBSITE + "'>" + props.WEBSITE + "</a></p>";
+                };
+            
+            layer.bindPopup(popup);
+                            
+            layer.on('mouseover', function(e) { //when mouse hovers over marker make it do a thing
+                this.openPopup(); //the thing is to open the popup
+                });
                         
-                              herMarker.on('mouseout', function() { //when the mouse moves away from the marker it will do a thing
-                                this.closePopup(); //the thing will be to close the popup
-                              });
+            layer.on('mouseout', function(e) { //when the mouse moves away from the marker it will do a thing
+                this.closePopup(); //the thing will be to close the popup
+                });
                 
             }
         }).addTo(map);
