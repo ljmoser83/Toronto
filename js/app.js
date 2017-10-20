@@ -45,8 +45,6 @@
         drawMap(boundary, herDistrict, trails, cultSpot);
     });
 
-
-
     function drawMap(boundary, herDistrict, trails, cultSpot) {
 
         L.geoJson(boundary, {
@@ -61,27 +59,27 @@
             //     icon : cultIcon
             //     })
             // },
-        
-            onEachFeature: function(feature, layer) {
-                var props = feature.properties;
-                
-            var popup = "<h3>" + props.PNT_OF_INT + "</h3>" + "<p>" + props.DESCRPTION + "</p>"
 
-            if(props.WEBSITE != null) {
-                popup += "<p><b>Website</b>: <a href=' " + props.WEBSITE + "'>" + props.WEBSITE + "</a></p>";
+            onEachFeature: function (feature, layer) {
+                var props = feature.properties;
+
+                var popup = "<h3>" + props.PNT_OF_INT + "</h3>" + "<p>" + props.DESCRPTION + "</p>"
+
+                if (props.WEBSITE != null) {
+                    popup += "<p><b>Website</b>: <a href=' " + props.WEBSITE + "'>" + props.WEBSITE + "</a></p>";
                 };
                 //would be good exclude all markers where props.CATEGORY = 'Business'
-            
-            layer.bindPopup(popup);
-                            
-            layer.on('mouseover', function(e) { //when mouse hovers over marker make it do a thing
-                this.openPopup(); //the thing is to open the popup
+
+                layer.bindPopup(popup);
+
+                layer.on('mouseover', function (e) { //when mouse hovers over marker make it do a thing
+                    this.openPopup(); //the thing is to open the popup
                 });
-                        
-            layer.on('mouseout', function(e) { //when the mouse moves away from the marker it will do a thing
-                this.closePopup(); //the thing will be to close the popup
+
+                layer.on('mouseout', function (e) { //when the mouse moves away from the marker it will do a thing
+                    this.closePopup(); //the thing will be to close the popup
                 });
-                
+
             }
         }).addTo(map);
 
