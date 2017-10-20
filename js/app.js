@@ -1,23 +1,22 @@
 (function () {
-    
+    //options for styles of the features
     var boundaryOptions = {
         fillOpacity: 0,
-        color: 'red',
+        color: '#55acee',
         opacity: 1,
-        weight: 3
-    };
-
-    var neighborhoodOptions = {
-        fillOpacity: 0,
-        color: 'blue',
-        opacity: 1,
-        weight: 2
+        weight: 1
     };
 
     var herOptions = {
         fillOpacity: 1,
-        fillColor: 'green',
-        weight: 1,
+        fillColor: '#66c0b7',
+        color: '#66c0b7',
+        weight: .5,
+    };
+
+    var trailsOptions = {
+        color: '#009688',
+        weight: 2,
     };
 
     var options = {
@@ -25,15 +24,14 @@
         zoom: 11,
         minZoom: 9,
         maxZoom: 16,
-
     };
-
   
     var cultIcon = L.icon({
         iconUrl: 'svg/hert-svg.svg',
         iconSize: [20, 20]
     });
     
+    //load basemap
     var map = L.map('map', options);
     
        L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
@@ -42,7 +40,7 @@
     maxZoom: 19
 }).addTo(map); 
     
-
+//Ajax request to load data files and call to drawMap once loaded
     $.when(
         $.getJSON('data/toronto-boundary.json'),
         $.getJSON('data/her-dist.json'),
@@ -52,33 +50,40 @@
         drawMap(boundary, herDistrict, trails, cultSpot);
     });
 
+    //begin drawMap function
     function drawMap(boundary, herDistrict, trails, cultSpot) {
 
+        //create geoJSON layers
         L.geoJson(boundary, {
             style: boundaryOptions
         }).addTo(map);
         L.geoJson(herDistrict, {
             style: herOptions
         }).addTo(map);
-        L.geoJson(trails).addTo(map);
+        L.geoJson(trails, {
+            style: trailsOptions
+        }).addTo(map);
         L.geoJson(cultSpot, {
+            //trying to change the marker
             // forEach: function(feature) {L.marker([feature.properties.LONGITUDE, feature.properties.LATITUDE], {
             //     icon : cultIcon
             //     })
             // },
 
+            //loop through each feature
             onEachFeature: function (feature, layer) {
+                
                 var props = feature.properties;
-
+                //variable to hold popup
                 var popup = "<h3>" + props.PNT_OF_INT + "</h3>" + "<p>" + props.DESCRPTION + "</p>"
-
+                //if there is no webite, exclude that line from the popup
                 if (props.WEBSITE != null) {
                     popup += "<p><b>Website</b>: <a href=' " + props.WEBSITE + "'>" + props.WEBSITE + "</a></p>";
                 };
                 //would be good exclude all markers where props.CATEGORY = 'Business'
-
+                //add the popus to the layer
                 layer.bindPopup(popup);
-
+                //UI events
                 layer.on('mouseover', function (e) { //when mouse hovers over marker make it do a thing
                     this.openPopup(); //the thing is to open the popup
                 });
@@ -88,7 +93,7 @@
                 });
 
             }
-        }).addTo(map);
+        }).addTo(map);//end drawMap function
 
     }
 
