@@ -1,6 +1,5 @@
 (function () {
-
-
+    
     var boundaryOptions = {
         fillOpacity: 0,
         color: 'red',
@@ -29,12 +28,20 @@
 
     };
 
+  
     var cultIcon = L.icon({
         iconUrl: 'svg/hert-svg.svg',
         iconSize: [20, 20]
     });
-
+    
     var map = L.map('map', options);
+    
+       L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+}).addTo(map); 
+    
 
     $.when(
         $.getJSON('data/toronto-boundary.json'),
