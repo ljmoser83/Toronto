@@ -8,7 +8,7 @@
     };
 
     var herOptions = {
-        fillOpacity: 1,
+        fillOpacity: .5,
         fillColor: '#66c0b7',
         color: '#66c0b7',
         weight: .5,
