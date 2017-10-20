@@ -2,16 +2,9 @@
     
     var boundaryOptions = {
         fillOpacity: 0,
-        color: 'red',
+        color: '#32ab9f',
         opacity: 1,
-        weight: 3
-    };
-
-    var neighborhoodOptions = {
-        fillOpacity: 0,
-        color: 'blue',
-        opacity: 1,
-        weight: 2
+        weight: 1
     };
 
     var herOptions = {
