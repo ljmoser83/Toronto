@@ -29,7 +29,10 @@
 
     };
 
-    
+    var cultIcon = L.icon({
+        iconUrl: 'svg/hert-svg.svg',
+        iconSize: [20, 20]
+    });
 
     var map = L.map('map', options);
 
@@ -42,6 +45,8 @@
         drawMap(boundary, herDistrict, trails, cultSpot);
     });
 
+
+
     function drawMap(boundary, herDistrict, trails, cultSpot) {
 
         L.geoJson(boundary, {
@@ -52,23 +57,20 @@
         }).addTo(map);
         L.geoJson(trails).addTo(map);
         L.geoJson(cultSpot, {
-            
+            // forEach: function(feature) {L.marker([feature.properties.LONGITUDE, feature.properties.LATITUDE], {
+            //     icon : cultIcon
+            //     })
+            // },
+        
             onEachFeature: function(feature, layer) {
                 var props = feature.properties;
                 
-            //     var herIcon = L.icon({
-            //         iconUrl: 'svg/hert-svg.svg',
-            //         iconSize: [20, 20]
-            //             });
-                
-            // L.marker([props.LONGITUDE, props.LATITUDE], {
-            //     icon:herIcon
-            // }).addTo(map)
+            var popup = "<h3>" + props.PNT_OF_INT + "</h3>" + "<p>" + props.DESCRPTION + "</p>"
 
-            var popup = "<h3>" + props.PNT_OF_INT + "</h3>" + "<p>" + props.DESCRPTION + "</p>";
             if(props.WEBSITE != null) {
                 popup += "<p><b>Website</b>: <a href=' " + props.WEBSITE + "'>" + props.WEBSITE + "</a></p>";
                 };
+                //would be good exclude all markers where props.CATEGORY = 'Business'
             
             layer.bindPopup(popup);
                             
