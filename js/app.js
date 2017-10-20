@@ -2,7 +2,7 @@
     
     var boundaryOptions = {
         fillOpacity: 0,
-        color: '#32ab9f',
+        color: '#55acee',
         opacity: 1,
         weight: 1
     };
@@ -12,6 +12,11 @@
         fillColor: '#66c0b7',
         color: '#66c0b7',
         weight: .5,
+    };
+
+    var trailsOptions = {
+        color: '#009688',
+        weight: 2,
     };
 
     var options = {
@@ -54,7 +59,9 @@
         L.geoJson(herDistrict, {
             style: herOptions
         }).addTo(map);
-        L.geoJson(trails).addTo(map);
+        L.geoJson(trails, {
+            style: trailsOptions
+        }).addTo(map);
         L.geoJson(cultSpot, {
             // forEach: function(feature) {L.marker([feature.properties.LONGITUDE, feature.properties.LATITUDE], {
             //     icon : cultIcon
