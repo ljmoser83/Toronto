@@ -9,8 +9,9 @@
 
     var herOptions = {
         fillOpacity: 1,
-        fillColor: 'green',
-        weight: 1,
+        fillColor: '#66c0b7',
+        color: '#66c0b7',
+        weight: .5,
     };
 
     var options = {
