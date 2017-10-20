@@ -17,7 +17,7 @@
     var herOptions = {
         fillOpacity: 1,
         fillColor: 'green',
-        weight: 1
+        weight: 1,
     };
 
     var options = {
@@ -27,7 +27,12 @@
         maxZoom: 16,
 
     };
-    
+
+  
+    var cultIcon = L.icon({
+        iconUrl: 'svg/hert-svg.svg',
+        iconSize: [20, 20]
+    });
     
     var map = L.map('map', options);
     
@@ -37,6 +42,7 @@
     maxZoom: 19
 }).addTo(map); 
     
+
     $.when(
         $.getJSON('data/toronto-boundary.json'),
         $.getJSON('data/her-dist.json'),
@@ -55,6 +61,35 @@
             style: herOptions
         }).addTo(map);
         L.geoJson(trails).addTo(map);
-        L.geoJson(cultSpot).addTo(map);
+        L.geoJson(cultSpot, {
+            // forEach: function(feature) {L.marker([feature.properties.LONGITUDE, feature.properties.LATITUDE], {
+            //     icon : cultIcon
+            //     })
+            // },
+
+            onEachFeature: function (feature, layer) {
+                var props = feature.properties;
+
+                var popup = "<h3>" + props.PNT_OF_INT + "</h3>" + "<p>" + props.DESCRPTION + "</p>"
+
+                if (props.WEBSITE != null) {
+                    popup += "<p><b>Website</b>: <a href=' " + props.WEBSITE + "'>" + props.WEBSITE + "</a></p>";
+                };
+                //would be good exclude all markers where props.CATEGORY = 'Business'
+
+                layer.bindPopup(popup);
+
+                layer.on('mouseover', function (e) { //when mouse hovers over marker make it do a thing
+                    this.openPopup(); //the thing is to open the popup
+                });
+
+                layer.on('mouseout', function (e) { //when the mouse moves away from the marker it will do a thing
+                    this.closePopup(); //the thing will be to close the popup
+                });
+
+            }
+        }).addTo(map);
+
     }
+
 })();
