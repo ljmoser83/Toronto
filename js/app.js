@@ -1,15 +1,4 @@
 (function () {
-        //mapbox access token for ljmoser83 account
-   L.mapbox.accessToken = 'pk.eyJ1IjoibGptb3NlcjgzIiwiYSI6ImNqOHo0bWh1MTJqNjQzM280bDRiOG1hdmEifQ.dckxPH6XzM980t1b8L9FEw';
-
-   // create the Leaflet map using mapbox.dark tiles. sets zoom levels to appropriate levels for the extent of dataLayer
-   var map = L.mapbox.map('map', 'mapbox.dark', {
-       zoomSnap: .1,
-       minZoom: 2,
-       maxZoom: 11,
-       center: [43.7246, -79.3813],
-   });
-    
     
     //options for styles of the features
     var boundaryOptions = {
@@ -33,7 +22,8 @@
 
     var options = {
         center: [43.6527, -79.5208],
-        zoom: 12,
+        zoomSnap: .1,
+        zoom: 13,
         minZoom: 9,
         maxZoom: 16,
     };
@@ -44,15 +34,13 @@
     });
     
     //load basemap
-//     var map = L.map('map', options);
-    
-//        L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
-//     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-//     subdomains: 'abcd',
-//     maxZoom: 19
-// }).addTo(map); 
-    
-//Ajax request to load data files and call to drawMap once loaded
+    //mapbox access token for ljmoser83 account
+   L.mapbox.accessToken = 'pk.eyJ1IjoibGptb3NlcjgzIiwiYSI6ImNqOHo0bWh1MTJqNjQzM280bDRiOG1hdmEifQ.dckxPH6XzM980t1b8L9FEw';
+   
+    // create the Leaflet map using mapbox.dark tiles. sets zoom levels to appropriate levels for the extent of dataLayer
+    var map = L.mapbox.map('map', 'mapbox.dark', options);
+   
+    //Ajax request to load data files and call to drawMap once loaded
     $.when(
         $.getJSON('data/toronto-boundary.json'),
         $.getJSON('data/her-dist.json'),
