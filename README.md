@@ -7,3 +7,5 @@ This map was created for Assignment 1 in MAP 675 at the University of Kentucky b
   *[Boundary for City of Toronto](https://www1.toronto.ca/wps/portal/contentonly?vgnextoid=c1a6e72ced779310VgnVCM1000003dd60f89RCRD&vgnextchannel=1a66e03bb8d1e310VgnVCM10000071d60f89RCRD)  
 
 The scenario that we envisioned is that the City of Toronto wants to highlight the many cultural and historical hotspots along their various bike trails. They also wanted to see which heritage districts the bike trails passed through. Mouse-hovers over the various locations trigger a popup with the name of the location, a brief description, and website, if provided.
+
+This map was built using [Leaflet](http://leafletjs.com/), [Mapbox](https://www.mapbox.com/), [Google Fonts](https://fonts.google.com/), and icons from the [Noun Project](https://thenounproject.com/) (Culture by Luka Purgar from the Noun Project). Thanks to our instructor Rich Donohue for help when things went wrong.
