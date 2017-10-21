@@ -1,4 +1,16 @@
 (function () {
+        // mapbox access token for ljmoser83 account
+//    L.mapbox.accessToken = 'pk.eyJ1IjoibGptb3NlcjgzIiwiYSI6ImNqOHo0bWh1MTJqNjQzM280bDRiOG1hdmEifQ.dckxPH6XzM980t1b8L9FEw';
+//
+//    // create the Leaflet map using mapbox.dark tiles. sets zoom levels to appropriate levels for the extent of dataLayer
+//    var map = L.mapbox.map('map', 'mapbox.dark', {
+//        zoomSnap: .1,
+//        minZoom: 2,
+//        maxZoom: 11,
+//        center: [43.7246, -79.3813],
+//    });
+    
+    
     //options for styles of the features
     var boundaryOptions = {
         fillOpacity: 0,
