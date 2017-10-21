@@ -21,7 +21,7 @@
     };
 
     var options = {
-        center: [43.6527, -79.5208],
+        center: [43.6380, -79.5072],
         zoomSnap: .1,
         zoom: 13,
         minZoom: 9,
