@@ -20,8 +20,8 @@
     };
 
     var options = {
-        center: [43.7246, -79.3813],
-        zoom: 11,
+        center: [43.6527, -79.5208],
+        zoom: 12,
         minZoom: 9,
         maxZoom: 16,
     };
@@ -45,7 +45,7 @@
         $.getJSON('data/toronto-boundary.json'),
         $.getJSON('data/her-dist.json'),
         $.getJSON('data/bike-trails.json'),
-        $.getJSON('data/cult-spot.json'),
+        $.getJSON('data/cult-spot2.json'),
     ).done(function (boundary, herDistrict, trails, cultSpot) {
         drawMap(boundary, herDistrict, trails, cultSpot);
     });
@@ -67,7 +67,6 @@
         L.geoJson(cultSpot, {
 
             pointToLayer: function(feature, latlng) {
-                if (feature.properties.CATEGORY == "Creative" || "Public Art" || "Nature")
                 return L.marker(latlng, {icon: cultIcon});
             },
 
