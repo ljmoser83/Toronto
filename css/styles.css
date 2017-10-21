@@ -8,3 +8,7 @@
             padding: 0;
             background: rgba(0, 0, 0, .75);
         }
+
+        h3, p {
+            font-family: 'Arimo', sans-serif;
+        }
