@@ -6,18 +6,20 @@
             bottom: 0;
             margin: 0;
             padding: 0;
+            z-index: 1;
             background: rgba(0, 0, 0, .75);
         }
 
         h3, p {
             font-family: 'Arimo', sans-serif;
+            z-index: 2;
         }
 /*style used to modify the title span to be overlain on the id='map' div*/
 .title {
     font-size: 50px;
     position: absolute;
     color: white;
-    z-index: 600;
+    z-index: 1;
     left: 50px;
     top: 25px;
     text-align: center;

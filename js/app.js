@@ -70,8 +70,8 @@
                 layer.bindPopup(tip);
                  
                 //add event listeners//
-                layer.on('click', function (e) { //when mouse hovers over marker make it do a thing
-                    this.openPopup(); //the thing is to open the popup
+                layer.on('mouseover', function (e) { //when mouse hovers over marker make it do a thing
+                    this.openPopup().bringToFront; //the thing is to open the popup
                 });
 
                 layer.on('mouseout', function (e) { //when the mouse moves away from the marker it will do a thing
