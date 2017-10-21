@@ -61,7 +61,23 @@
             style: herOptions
         }).addTo(map);
         L.geoJson(trails, {
-            style: trailsOptions
+            style: trailsOptions,
+            
+            //loops through each layer and binds a popup tip//
+            onEachFeature: function (feature, layer) {
+                var trailName= feature.properties;
+                var tip= "<h3> <b>Trail Name</b>: " + trailName.LF_Name + "<h3>"
+                layer.bindPopup(tip);
+                 
+                //add event listeners//
+                layer.on('click', function (e) { //when mouse hovers over marker make it do a thing
+                    this.openPopup(); //the thing is to open the popup
+                });
+
+                layer.on('mouseout', function (e) { //when the mouse moves away from the marker it will do a thing
+                    this.closePopup(); //the thing will be to close the popup
+                });
+            }
         }).addTo(map);
 
         L.geoJson(cultSpot, {

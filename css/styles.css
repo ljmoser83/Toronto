@@ -12,3 +12,14 @@
         h3, p {
             font-family: 'Arimo', sans-serif;
         }
+/*style used to modify the title span to be overlain on the id='map' div*/
+.title {
+    font-size: 50px;
+    position: absolute;
+    color: white;
+    z-index: 600;
+    left: 50px;
+    top: 25px;
+    text-align: center;
+    border-radius: 25px;
+}
