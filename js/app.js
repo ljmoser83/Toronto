@@ -27,7 +27,7 @@
     };
   
     var cultIcon = L.icon({
-        iconUrl: 'svg/hert-svg.svg',
+        iconUrl: 'svg/hert-svg2.svg',
         iconSize: [20, 20]
     });
     
@@ -63,12 +63,12 @@
         L.geoJson(trails, {
             style: trailsOptions
         }).addTo(map);
+
         L.geoJson(cultSpot, {
-            //trying to change the marker
-            // forEach: function(feature) {L.marker([feature.properties.LONGITUDE, feature.properties.LATITUDE], {
-            //     icon : cultIcon
-            //     })
-            // },
+
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {icon: cultIcon});
+            },
 
             //loop through each feature
             onEachFeature: function (feature, layer) {
