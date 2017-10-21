@@ -67,6 +67,7 @@
         L.geoJson(cultSpot, {
 
             pointToLayer: function(feature, latlng) {
+                if (feature.properties.CATEGORY == "Creative" || "Public Art" || "Nature")
                 return L.marker(latlng, {icon: cultIcon});
             },
 
