@@ -14,6 +14,17 @@
             font-family: 'Arimo', sans-serif;
             z-index: 2;
         }
+
+        .author {
+            position: fixed;
+            bottom: 30px;
+            left: 10px;
+            color: white;
+            z-index: 200;
+        }
+        a {
+            color: white;
+        }
 /*style used to modify the title span to be overlain on the id='map' div*/
 .title {
     font-size: 50px;
