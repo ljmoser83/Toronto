@@ -97,6 +97,14 @@
             //loop through each feature
             onEachFeature: function (feature, layer) {
                 
+                layer.on('mouseover', function () {
+                    layer.setStyle({
+                        fillColor: 'yellow'
+                    });
+                }).on('mouseout', function () {
+                    layer.setStyle(popupOptions)
+                });
+
                 var props = feature.properties;
                 //variable to hold popup
                 var popup = "<h3>" + props.PNT_OF_INT + "</h3>" + "<p>" + props.DESCRPTION + "</p>"
@@ -104,16 +112,13 @@
                 if (props.WEBSITE != null) {
                     popup += "<p><b>Website</b>: <a href=' " + props.WEBSITE + "'>" + props.WEBSITE + "</a></p>";
                 };
-                //would be good exclude all markers where props.CATEGORY = 'Business'
+                
                 //add the popus to the layer
                 layer.bindPopup(popup);
+                
                 //UI events
-                layer.on('mouseover', function (e) { //when mouse hovers over marker make it do a thing
+                layer.on('click', function (e) { //when mouse hovers over marker make it do a thing
                     this.openPopup().bringToFront; //the thing is to open the popup
-                });
-
-                layer.on('mouseout', function (e) { //when the mouse moves away from the marker it will do a thing
-                    this.closePopup(); //the thing will be to close the popup
                 });
 
             }
