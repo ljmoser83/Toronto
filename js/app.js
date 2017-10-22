@@ -34,7 +34,9 @@
     });
 
     var popupOptions = {
-        zIndexOffset: 1000
+        riseOnHover: true,
+        riseOffset: 1000,
+        pane: 'markerPane'
     };
     
     //load basemap
