@@ -17,6 +17,7 @@
 
     var trailsOptions = {
         color: '#009688',
+        stroke: 3,
         weight: 2,
     };
 
@@ -97,13 +98,13 @@
             //loop through each feature
             onEachFeature: function (feature, layer) {
                 
-                layer.on('mouseover', function () {
-                    layer.setStyle({
-                        fillColor: 'yellow'
-                    });
-                }).on('mouseout', function () {
-                    layer.setStyle(popupOptions)
-                });
+//                layer.on('mouseover', function () {
+//                    layer.setStyle({
+//                        fill: 'yellow'
+//                    });
+//                }).on('mouseout', function () {
+//                    layer.setStyle(popupOptions)
+//                });
 
                 var props = feature.properties;
                 //variable to hold popup
