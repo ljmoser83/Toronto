@@ -32,6 +32,10 @@
         iconUrl: 'svg/hert-svg2.svg',
         iconSize: [20, 20]
     });
+
+    var popupOptions = {
+        zIndexOffset: 1000
+    };
     
     //load basemap
     //mapbox access token for ljmoser83 account
@@ -82,6 +86,8 @@
 
         L.geoJson(cultSpot, {
 
+            style: popupOptions,
+
             pointToLayer: function(feature, latlng) {
                 return L.marker(latlng, {icon: cultIcon});
             },
@@ -101,7 +107,7 @@
                 layer.bindPopup(popup);
                 //UI events
                 layer.on('mouseover', function (e) { //when mouse hovers over marker make it do a thing
-                    this.openPopup(); //the thing is to open the popup
+                    this.openPopup().bringToFront; //the thing is to open the popup
                 });
 
                 layer.on('mouseout', function (e) { //when the mouse moves away from the marker it will do a thing

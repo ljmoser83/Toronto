@@ -19,7 +19,7 @@
     font-size: 50px;
     position: absolute;
     color: white;
-    z-index: 1;
+    z-index: 200;
     left: 50px;
     top: 25px;
     text-align: center;
