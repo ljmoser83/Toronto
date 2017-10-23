@@ -98,9 +98,7 @@
             //loop through each feature
             onEachFeature: function (feature, layer) {
                 
-
                 $("li").css({"cursor":"pointer"});
-
 
                 var props = feature.properties;
                 //variable to hold popup
