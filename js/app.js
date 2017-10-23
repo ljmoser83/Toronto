@@ -97,13 +97,7 @@
             //loop through each feature
             onEachFeature: function (feature, layer) {
                 
-                layer.on('mouseover', function () {
-                    layer.setStyle({
-                        fillColor: 'yellow'
-                    });
-                }).on('mouseout', function () {
-                    layer.setStyle(popupOptions)
-                });
+                $("li").css({"cursor":"pointer"});
 
                 var props = feature.properties;
                 //variable to hold popup
