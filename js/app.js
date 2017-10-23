@@ -35,17 +35,24 @@
     });
 
     var popupOptions = {
-        riseOnHover: true,
-        riseOffset: 1000,
-        pane: 'markerPane'
+        // riseOnHover: true,
+        // riseOffset: 1000,
+        // pane: 'markerPane'
     };
     
     //load basemap
     //mapbox access token for ljmoser83 account
-   L.mapbox.accessToken = 'pk.eyJ1IjoibGptb3NlcjgzIiwiYSI6ImNqOHo0bWh1MTJqNjQzM280bDRiOG1hdmEifQ.dckxPH6XzM980t1b8L9FEw';
+   var accessToken = 'pk.eyJ1IjoibGptb3NlcjgzIiwiYSI6ImNqOHo0bWh1MTJqNjQzM280bDRiOG1hdmEifQ.dckxPH6XzM980t1b8L9FEw';
    
     // create the Leaflet map using mapbox.dark tiles. sets zoom levels to appropriate levels for the extent of dataLayer
-    var map = L.mapbox.map('map', 'mapbox.dark', options);
+    var map = L.map('map', options);
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token='+ accessToken, {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.dark',
+        accessToken: accessToken
+    }).addTo(map);
    
     //Ajax request to load data files and call to drawMap once loaded
     $.when(
@@ -88,9 +95,7 @@
         }).addTo(map);
 
         L.geoJson(cultSpot, {
-
-            style: popupOptions,
-
+            
             pointToLayer: function(feature, latlng) {
                 return L.marker(latlng, {icon: cultIcon});
             },
