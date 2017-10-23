@@ -34,12 +34,6 @@
         iconSize: [20, 20]
     });
 
-    var popupOptions = {
-        // riseOnHover: true,
-        // riseOffset: 1000,
-        // pane: 'markerPane'
-    };
-    
     //load basemap
     //mapbox access token for ljmoser83 account
    var accessToken = 'pk.eyJ1IjoibGptb3NlcjgzIiwiYSI6ImNqOHo0bWh1MTJqNjQzM280bDRiOG1hdmEifQ.dckxPH6XzM980t1b8L9FEw';

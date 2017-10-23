@@ -31,8 +31,9 @@ h3, p {
     bottom: 30px;
     left: 10px;
     color: white;
-    z-index: 200;
+    z-index: 500;
 }
+
 a {
     color: white;
 }
