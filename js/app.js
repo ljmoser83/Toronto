@@ -17,6 +17,7 @@
 
     var trailsOptions = {
         color: '#009688',
+        stroke: 3,
         weight: 2,
     };
 
@@ -97,7 +98,9 @@
             //loop through each feature
             onEachFeature: function (feature, layer) {
                 
+
                 $("li").css({"cursor":"pointer"});
+
 
                 var props = feature.properties;
                 //variable to hold popup
