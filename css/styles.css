@@ -1,30 +1,41 @@
-        body,
-        #map {
-            position: absolute;
-            width: 100%;
-            top: 0;
-            bottom: 0;
-            margin: 0;
-            padding: 0;
-            z-index: 1;
-            background: rgba(0, 0, 0, .75);
-        }
+body {
+    margin: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, .9);
+}
+#map {
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid white;
+    background: rgba(0, 0, 0, .75);
+}
+h1 {
+    margin-top: 18px;
+    margin-left: 18px;
+    font-family: 'Arimo', sans-serif;
+    z-index: 399;
+    color: white;
+}
+.le
+h3, p {
+    font-family: 'Arimo', sans-serif;
+    z-index: 2;
+}
 
-        h3, p {
-            font-family: 'Arimo', sans-serif;
-            z-index: 2;
-        }
-
-        .author {
-            position: fixed;
-            bottom: 30px;
-            left: 10px;
-            color: white;
-            z-index: 200;
-        }
-        a {
-            color: white;
-        }
+.author {
+    position: fixed;
+    bottom: 30px;
+    left: 10px;
+    color: white;
+    z-index: 200;
+}
+a {
+    color: white;
+}
 /*style used to modify the title span to be overlain on the id='map' div*/
 .title {
     font-size: 50px;
@@ -37,6 +48,3 @@
     border-radius: 25px;
 }
 
-popup {
-    z-index: 1000;
-}
